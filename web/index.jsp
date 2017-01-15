@@ -27,6 +27,18 @@
   <body>
 
   <br><br>
+  <a href="testSimpleMappingExceptionResolver2?i=2">test SimpleMappingExceptionResolver</a>
+
+  <br><br>
+  <a href="testDefaultHandlerExceptionResolver">test DefaultHandlerExceptionResolver</a>
+
+  <br><br>
+  <a href="testResponseStatusExceptionResolver">test ResponseStatusExceptionResolver</a>
+
+  <br><br>
+  <a href="testExceptionHandlerExceptionResolver?i=5">Test ExceptionHandlerExceptionResolver</a>
+
+  <br><br>
   <form action="testFileUpload" method="post" enctype="multipart/form-data">
     文件：<input type="file" name="file"/>
     描述：<input type="text" name="desc"/>

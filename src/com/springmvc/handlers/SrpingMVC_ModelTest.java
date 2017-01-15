@@ -4,11 +4,9 @@ import com.spring.entities.User;
 import com.springmvc.dao.EmployeeDAO;
 import com.springmvc.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -32,6 +30,60 @@ public class SrpingMVC_ModelTest {
     @Autowired
     private EmployeeDAO employeeDAO;
 
+    @RequestMapping("testSimpleMappingExceptionResolver")
+    public String testSimpleMappingExceptionResolver(int i) {
+        String[] vars = new String[10];
+        System.out.println("SrpingMVC_ModelTest.testSimpleMappingExceptionResolver : " + vars[i]);
+        return SUCCESS;
+    }
+
+    @RequestMapping(value = "testDefaultHandlerExceptionResolver", method = RequestMethod.POST)
+    public String testDefaultHandlerExceptionResolver() {
+        System.out.println("SrpingMVC_ModelTest.testDefaultHandlerExceptionResolver");
+        return SUCCESS;
+    }
+
+    @ResponseStatus(value = HttpStatus.FORBIDDEN, reason = "啦啦啦")
+    @RequestMapping("testResponseStatusExceptionResolver")
+    public String testResponseStatusExceptionResolver(int i) {
+
+        if(i == 3) {
+            throw new UserException();
+        }
+        System.out.println("SrpingMVC_ModelTest.testResponseStatusExceptionResolver");
+        return SUCCESS;
+    }
+    /**
+     * 比下面的方法精确度低
+     */
+//    @ExceptionHandler({RuntimeException.class})
+//    public ModelAndView handlerArithmeticException2(Exception ex) {
+//        System.out.println("RuntimeException 出异常了: " + ex);
+//        //参数就是视图名称
+//        ModelAndView mv = new ModelAndView("error");
+//        mv.addObject("exception", ex.toString());
+//        return mv;
+//    }
+    /**
+     * 1、数学异常处理器
+     * 2、如果想要将信息传递到页面中去，需要使用ModelAndView
+     * 3、@ExceptionHandler具有优先级，会优先匹配精确度高的
+     * 4、@ControllerAdvice:如果在当前Handler中找不到@ExceptionHandler 方法标记的异常处理方法
+     *    则会去这个标记的类中去查找，@ExceptionHandler 标记的异常处理方法
+     */
+//    @ExceptionHandler({ArithmeticException.class})
+//    public ModelAndView handlerArithmeticException(Exception ex) {
+//        System.out.println("出异常了: " + ex);
+//        //参数就是视图名称
+//        ModelAndView mv = new ModelAndView("error");
+//        mv.addObject("exception", ex.toString());
+//        return mv;
+//    }
+    @RequestMapping("testExceptionHandlerExceptionResolver")
+    public String testExceptionHandlerExceptionResolver(@RequestParam("i") int i) {
+        System.out.println("result: " + 10 / i);
+        return SUCCESS;
+    }
     /**
      * 测试文件上传
      */
@@ -80,7 +132,7 @@ public class SrpingMVC_ModelTest {
     @ModelAttribute
     public void getUsers(@RequestParam(value="username",required=false) String username,
                          Map<String, Object> map) {
-        System.out.println("SrpingMVC_ModelTest.getUsers");
+//        System.out.println("SrpingMVC_ModelTest.getUsers");
        if(username != null) {
            User user = new User("Tom", "TomLike",13);
            System.out.println("模拟从数据库中获取一个对象：" + user);
