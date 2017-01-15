@@ -7,39 +7,39 @@ package com.springmvc.entities;
  */
 public class Department {
 
-    private int id;
+	private int id;
 
-    private String departmentName;
+	private String departmentName;
 
-    public Department(int id, String departmentName) {
-        this.id = id;
-        this.departmentName = departmentName;
-    }
+	public Department(int id, String departmentName) {
+		this.id = id;
+		this.departmentName = departmentName;
+	}
 
-    public Department () {
+	public Department () {
 
-    }
-    public int getId() {
-        return id;
-    }
+	}
+	public int getId() {
+		return id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public String getDepartmentName() {
-        return departmentName;
-    }
+	public String getDepartmentName() {
+		return departmentName;
+	}
 
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
-    }
+	public void setDepartmentName(String departmentName) {
+		this.departmentName = departmentName;
+	}
 
-    @Override
-    public String toString() {
-        return "Department{" +
-                "id=" + id +
-                ", departmentName='" + departmentName + '\'' +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "Department{" +
+				"id=" + id +
+				", departmentName='" + departmentName + '\'' +
+				'}';
+	}
 }

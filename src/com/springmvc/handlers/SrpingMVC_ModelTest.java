@@ -5,7 +5,10 @@ import com.springmvc.dao.EmployeeDAO;
 import com.springmvc.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Arrays;
@@ -19,7 +22,7 @@ import java.util.Map;
  * 四种：ModelAndView、Map 及 Model 、@SessionAttributes、@ModelAttribute
  * Created by JasonTang on 11/01/2017 20:29.
  */
-@SessionAttributes(value = "user", types = String.class)
+//@SessionAttributes(value = "user", types = String.class)
 @Controller
 public class SrpingMVC_ModelTest {
     private static final String SUCCESS = "success";

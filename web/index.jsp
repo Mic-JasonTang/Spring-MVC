@@ -7,11 +7,27 @@
 <html>
   <head>
     <title>HelloWorld</title>
+    <script type="application/javascript" src="scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        $("#testJSON").click(function(){
+          var url = this.href;
+          $.post(url,function(data){
+            for(var i =0; i < data.length; i ++) {
+              var id = data[i].id;
+              var username = data[i].userName;
+              alert(id + ": " + username);
+            }
+          })
+          return false;
+        });
+      })
+    </script>
   </head>
   <body>
 
   <br> <br>
-  <a href="testJSON">Test JSON</a>
+  <a href="testJSON" id="testJSON">Test JSON</a>
 
   <br> <br>
   <a href="testRedirect">Test Redirect</a>

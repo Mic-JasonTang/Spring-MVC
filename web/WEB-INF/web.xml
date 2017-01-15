@@ -4,18 +4,6 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <!--
-        org.springframework.web.filter.HiddenHttpMethodFilter
-        可以将POST请求转为DELETE或POST请求
-    -->
-    <filter>
-        <filter-name>HiddenHttpMethodFilter</filter-name>
-        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>HiddenHttpMethodFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
 
     <!-- 去扫描组件，并进行加载 -->
     <listener>
@@ -31,7 +19,7 @@
         <!-- 可以使用默认的configLocation，配置文件名为：/WEB-INF/[servlet-name]-servlet.xml -->
         <!--<init-param>-->
             <!--<param-name>contextConfigLocation</param-name>-->
-            <!--<param-value>/WEB-INF/applicationContext.xml</param-value>-->
+            <!--<param-value>/WEB-INF/dispatcher-servlet.xml</param-value>-->
         <!--</init-param>-->
         <!-- 当前Servlet在当前web应用被加载的时候就被创建，而不是等请求的时候才被创建 -->
         <load-on-startup>1</load-on-startup>
@@ -40,4 +28,5 @@
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
 </web-app>
