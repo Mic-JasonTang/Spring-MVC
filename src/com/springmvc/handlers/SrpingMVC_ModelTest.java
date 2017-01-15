@@ -1,14 +1,15 @@
 package com.springmvc.handlers;
 
 import com.spring.entities.User;
+import com.springmvc.dao.EmployeeDAO;
+import com.springmvc.entities.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
 
@@ -22,6 +23,15 @@ import java.util.Map;
 @Controller
 public class SrpingMVC_ModelTest {
     private static final String SUCCESS = "success";
+
+    @Autowired
+    private EmployeeDAO employeeDAO;
+
+    @ResponseBody
+    @RequestMapping("testJSON")
+    public Collection<Employee> testJSON() {
+        return employeeDAO.getAll();
+    }
 
     /**
      * 重定、转发向视图
