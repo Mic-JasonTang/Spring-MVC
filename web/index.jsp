@@ -11,6 +11,9 @@
   <body>
 
   <br> <br>
+  <a href="testJSON">Test JSON</a>
+
+  <br> <br>
   <a href="testRedirect">Test Redirect</a>
 
   <br> <br>
