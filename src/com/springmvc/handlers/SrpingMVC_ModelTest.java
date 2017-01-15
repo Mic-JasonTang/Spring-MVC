@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
@@ -30,6 +32,22 @@ public class SrpingMVC_ModelTest {
     @Autowired
     private EmployeeDAO employeeDAO;
 
+    /**
+     * 测试文件上传
+     */
+    @RequestMapping("testFileUpload")
+    public String testFileUpload(@RequestParam("desc") String desc,
+                                 @RequestParam("file") MultipartFile file) throws IOException {
+        System.out.println("desc: " + desc);
+        System.out.println("fileName: " + file.getOriginalFilename() + ",fileName2: " + file.getName());
+        System.out.println("fileInputStream: " + file.getInputStream());
+        System.out.println("fileSize: " + file.getSize());
+        return SUCCESS;
+    }
+
+    /**
+     * 测试json串
+     */
     @ResponseBody
     @RequestMapping("testJSON")
     public Collection<Employee> testJSON() {

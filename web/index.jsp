@@ -26,6 +26,13 @@
   </head>
   <body>
 
+  <br><br>
+  <form action="testFileUpload" method="post" enctype="multipart/form-data">
+    文件：<input type="file" name="file"/>
+    描述：<input type="text" name="desc"/>
+    <input type="submit" value="submit"/>
+  </form>
+
   <br> <br>
   <a href="testJSON" id="testJSON">Test JSON</a>
 
